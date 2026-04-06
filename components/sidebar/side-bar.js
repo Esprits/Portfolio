@@ -37,9 +37,31 @@ class Sidebar extends HTMLElement {
 
 // Fills in the element with its elements
 function addDOMElements(win) {
-	const test = document.createElement("div");
+	const sidebarButton = createSidebarButton();
+	const sidebarContents = document.createElement("div");
+	sidebarContents.id = "sidebar-contents";
+	sidebarContents.hidden = true;
 
-	win.append(test);
+	win.append(sidebarButton);
+	win.append(sidebarContents);
+}
+
+function createSidebarButton() {
+	const sidebarButton = document.createElement("div");
+	sidebarButton.id = "sidebar-button";
+
+	sidebarButton.addEventListener("click", function(e) {
+		expandSidebar();
+	}, true);
+
+	return sidebarButton;
+}
+
+
+function expandSidebar() {
+	// USE THE EXPANDED STATE INSTEAD TO DO THIS
+	const sidebarContents = document.getElementById("sidebar-contents");
+	sidebarContents.hidden = false;
 }
 
 customElements.define("side-bar", Sidebar);
