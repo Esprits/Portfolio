@@ -20,16 +20,16 @@ class Sidebar extends HTMLElement {
 		// If I do plan to use it, add "static observedAttributes = ["attribute"];" before the constructor
 	}
 
-	// Get & Set add the "opened" state for CSS
+	// Get & Set add the "expanded" state for CSS
 	get expanded() {
-		return this._internals.states.has("opened");
+		return this._internals.states.has("expanded");
 	}
 
 	set expanded(flag) {
 		if (flag) {
-			this._internals.states.add("opened");
+			this._internals.states.add("expanded");
 		} else {
-			this._internals.states.delete("opened");
+			this._internals.states.delete("expanded");
 		}
 	}
 }
@@ -37,31 +37,29 @@ class Sidebar extends HTMLElement {
 
 // Fills in the element with its elements
 function addDOMElements(win) {
-	const sidebarButton = createSidebarButton();
+	const sidebarButton = createSidebarButton(win);
 	const sidebarContents = document.createElement("div");
 	sidebarContents.id = "sidebar-contents";
-	sidebarContents.hidden = true;
 
 	win.append(sidebarButton);
 	win.append(sidebarContents);
 }
 
-function createSidebarButton() {
+function createSidebarButton(win) {
 	const sidebarButton = document.createElement("div");
 	sidebarButton.id = "sidebar-button";
 
 	sidebarButton.addEventListener("click", function(e) {
-		expandSidebar();
+		expandSidebar(win);
 	}, true);
 
 	return sidebarButton;
 }
 
 
-function expandSidebar() {
-	// USE THE EXPANDED STATE INSTEAD TO DO THIS
-	const sidebarContents = document.getElementById("sidebar-contents");
-	sidebarContents.hidden = false;
+function expandSidebar(win) {
+	win.expanded = true;
 }
+
 
 customElements.define("side-bar", Sidebar);
