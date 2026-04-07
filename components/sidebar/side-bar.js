@@ -38,8 +38,7 @@ class Sidebar extends HTMLElement {
 // Fills in the element with its elements
 function addDOMElements(win) {
 	const sidebarButton = createSidebarButton(win);
-	const sidebarContents = document.createElement("div");
-	sidebarContents.id = "sidebar-contents";
+	const sidebarContents = createSidebarContents(win);
 
 	win.append(sidebarButton);
 	win.append(sidebarContents);
@@ -56,9 +55,28 @@ function createSidebarButton(win) {
 	return sidebarButton;
 }
 
+function createSidebarContents(win) {
+	const sidebarContents = document.createElement("div");
+	sidebarContents.id = "sidebar-contents";
+
+	document.addEventListener("click", function(e) {
+		if (win.expanded) {
+			if (e.target !== sidebarContents) {
+				closeSidebar(win);
+			}
+		}
+	}, true);
+
+	return sidebarContents;
+}
+
 
 function expandSidebar(win) {
 	win.expanded = true;
+}
+
+function closeSidebar(win) {
+	win.expanded = false;
 }
 
 
