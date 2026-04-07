@@ -62,6 +62,8 @@ function createSidebarContents(win) {
 	document.addEventListener("click", function(e) {
 		if (win.expanded) {
 			if (e.target !== sidebarContents) {
+				e.stopPropagation();
+
 				closeSidebar(win);
 			}
 		}
