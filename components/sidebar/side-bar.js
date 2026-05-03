@@ -61,6 +61,13 @@ function createSidebarContents(win) {
 	const sidebarContents = document.createElement("div");
 	sidebarContents.id = "sidebar-contents";
 
+	const sidebarNav = document.createElement("nav");
+	sidebarNav.id = "sidebar-nav";
+
+	fillSidebarNav(win, sidebarNav);
+
+	sidebarContents.append(sidebarNav);
+
 	// When the sidebar is expanded, close it when user clicks outside (which includes the button)
 	document.addEventListener("click", function(e) {
 		if (win.expanded) {
@@ -73,6 +80,41 @@ function createSidebarContents(win) {
 	}, true);
 
 	return sidebarContents;
+}
+
+// Adds buttons and more to the sidebar nav
+function fillSidebarNav(win, sidebarNav) {
+	const sidebarButtons = [
+		{"title": "Home", "action": "homePage"},
+		{"title": "Projects", "action": "projectsSubmenu", "subButtons": [
+			{"title": "School", "action": "schoolProjectsPage"},
+			{"title": "Personal", "action": "personalProjectsPage"}
+		]},
+		{"title": "Documents", "action": "documentsSubmenu", "subButtons": [
+			{"title": "Resume", "action": "resumePage"},
+			{"title": "Diplomas", "action": "diplomasPage"},
+			{"title": "Other Documents", "action": "otherDocsPage"}
+		]},
+		{"title": "About Me", "action": "aboutPage"},
+	];
+
+	createSidebarNavButton(sidebarNav, sidebarButtons);
+}
+
+function createSidebarNavButton(container, buttons) {
+	for (var i = 0; i < buttons.length; i++) {
+		const obj = buttons[i];
+
+		const sidebarNavButton = document.createElement("div");
+		sidebarNavButton.classList.add("sidebar-nav-button");
+		sidebarNavButton.id = obj.action;
+
+		if (obj?.subButtons) {
+			createSidebarNavButton(sidebarNavButton, obj.subButtons);
+		}
+
+		container.append(sidebarNavButton);
+	}
 }
 
 
