@@ -29,6 +29,8 @@ side-bar {
 	z-index: 1;
 
 	transition: transform 750ms ease;
+
+	cursor: pointer;
 }
 
 #sidebar-contents {
