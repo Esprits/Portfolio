@@ -37,39 +37,22 @@ class Sidebar extends HTMLElement {
 
 // Fills in the element with its elements
 function addDOMElements(win) {
-	const sidebarButtonDiv = createSidebarButtonDiv(win);
+	const sidebarButton = createSidebarButton(win);
 	const sidebarContents = createSidebarContents(win);
 
-	win.append(sidebarButtonDiv);
+	win.append(sidebarButton);
 	win.append(sidebarContents);
 }
 
-function createSidebarButtonDiv(win) {
-	const sidebarButtonDiv = document.createElement("div");
-	sidebarButtonDiv.id = "sidebar-button-div";
-
+function createSidebarButton(win) {
 	const sidebarButton = document.createElement("div");
 	sidebarButton.id = "sidebar-button";
 
 	sidebarButton.addEventListener("click", function(e) {
 		expandSidebar(win);
-	});
+	}, true);
 
-	sidebarButtonDiv.addEventListener("mousemove", function(e) {
-		// SCRAP THIS ENTIRE THING IASJDSIDJSAIOASDAJDSIJIAAJDAIJSOI
-		const margin = (sidebarButtonDiv.offsetWidth - sidebarButton.offsetWidth) / 2;
-		const valueToAddX = e.offsetX - margin - (sidebarButton.offsetWidth * (e.offsetX / sidebarButtonDiv.offsetWidth));
-		const valueToAddY = e.offsetY - margin - (sidebarButton.offsetHeight * (e.offsetY / sidebarButtonDiv.offsetHeight));
-
-		console.dir(sidebarButtonDiv);
-		console.dir(sidebarButton);
-
-		sidebarButton.style.transform = "translate(" + valueToAddX + "px, " + valueToAddY + "px)";
-	});
-
-	sidebarButtonDiv.append(sidebarButton);
-
-	return sidebarButtonDiv;
+	return sidebarButton;
 }
 
 function createSidebarContents(win) {

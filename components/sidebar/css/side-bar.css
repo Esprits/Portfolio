@@ -2,7 +2,6 @@
 
 side-bar {
 	position: absolute;
-	display: block;
 
 	top: 0;
 	left: 0;
@@ -13,21 +12,9 @@ side-bar {
 	transition: width 500ms;
 }
 
-#sidebar-button-div {
+#sidebar-button {
 	position: absolute;
 
-	top: 0;
-	left: 0;
-
-	width: 65px;
-	height: 65px;
-
-	z-index: 1;
-
-	transition: transform 750ms ease;
-}
-
-#sidebar-button {
 	top: 0;
 	left: 0;
 
@@ -38,6 +25,10 @@ side-bar {
 
 	background-image: url(../../../assets/images/sidebar-button.png);
 	background-size: cover;
+
+	z-index: 1;
+
+	transition: transform 750ms ease;
 }
 
 #sidebar-contents {
@@ -60,6 +51,6 @@ side-bar:state(expanded) {
 	width: 300px;
 }
 
-side-bar:state(expanded) > #sidebar-button-div {
+side-bar:state(expanded) > #sidebar-button {
 	transform: translateX(235px) rotateY(180deg);
 }
