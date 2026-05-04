@@ -49,9 +49,9 @@ function createSidebarButton(win) {
 	const sidebarButton = document.createElement("div");
 	sidebarButton.id = "sidebar-button";
 
-	// When the sidebar button is clicked open it
+	// When the sidebar button is clicked, open it
 	sidebarButton.addEventListener("click", function(e) {
-		expandSidebar(win);
+		toggleSidebar(win);
 	}, true);
 
 	return sidebarButton;
@@ -68,21 +68,21 @@ function createSidebarContents(win) {
 
 	sidebarContents.append(sidebarNav);
 
-	// When the sidebar is expanded, close it when user clicks outside (which includes the button)
+	// When the sidebar is expanded, close it when user clicks outside
 	document.addEventListener("click", function(e) {
 		if (win.expanded) {
-			if (e.target !== sidebarContents) {
-				// TEMPORARILY REMOVED THE OPTION TO CLOSE THE SIDEBAR
-				// TEMPORARILY REMOVED THE OPTION TO CLOSE THE SIDEBAR
-				// TEMPORARILY REMOVED THE OPTION TO CLOSE THE SIDEBAR
-				// TEMPORARILY REMOVED THE OPTION TO CLOSE THE SIDEBAR
-				// TEMPORARILY REMOVED THE OPTION TO CLOSE THE SIDEBAR
-				// TEMPORARILY REMOVED THE OPTION TO CLOSE THE SIDEBAR
+			var node = e.target;
 
-				//e.stopPropagation();
+			while (node.parentNode) {
+				if (node === sidebarContents) {
+					return;
+				}
 
-				//closeSidebar(win);
+				node = node.parentNode;
 			}
+
+			e.stopPropagation();
+			closeSidebar(win);
 		}
 	}, true);
 
@@ -105,10 +105,10 @@ function fillSidebarNav(win, sidebarNav) {
 		{"title": "About Me", "action": "aboutPage"},
 	];
 
-	createSidebarNavButton(sidebarNav, sidebarButtons);
+	createSidebarNavButtons(sidebarNav, sidebarButtons);
 }
 
-function createSidebarNavButton(container, buttons) {
+function createSidebarNavButtons(container, buttons) {
 	for (var i = 0; i < buttons.length; i++) {
 		const obj = buttons[i];
 
@@ -118,23 +118,26 @@ function createSidebarNavButton(container, buttons) {
 
 		const buttonText = document.createElement("p");
 		buttonText.innerText = obj.title;
+
 		sidebarNavButton.append(buttonText);
 
+		// Creates the div to contain sub-buttons
 		const subButtonsDiv = document.createElement("div");
-		if (obj?.subButtons) {
-			subButtonsDiv.classList.add("sidebar-nav-subbuttons");
+		subButtonsDiv.classList.add("sidebar-nav-subbuttons");
 
-			createSidebarNavButton(subButtonsDiv, obj.subButtons);
+		if (obj?.subButtons) {
+			createSidebarNavButtons(subButtonsDiv, obj.subButtons); // Recursively adds the sub-buttons
 
 			sidebarNavButton.append(subButtonsDiv);
 		}
 
+		// Adds functionality to the button
 		buttonText.addEventListener("click", function(e) {
-			if (obj.action.includes("Page")) {
+			if (obj.action.includes("Page")) { // If the button is used to redirect to a page
 				pageFunctionality(obj.action);
 			}
 
-			if (obj.action.includes("Submenu")) {
+			if (obj.action.includes("Submenu")) { // If the button is simply used to open a sub-menu
 				submenuFunctionality(subButtonsDiv);
 			}
 		}, true);
@@ -145,6 +148,14 @@ function createSidebarNavButton(container, buttons) {
 
 
 /* ##### FUNCTIONALITIES ##### */
+
+function toggleSidebar(win) {
+	if (win.expanded) {
+		closeSidebar(win);
+	} else {
+		expandSidebar(win);
+	}
+}
 
 function expandSidebar(win) {
 	win.expanded = true;
