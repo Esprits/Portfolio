@@ -48,13 +48,7 @@ function addDOMElements(win) {
 function createSidebarButton(win) {
 	const sidebarButton = document.createElement("div");
 	sidebarButton.id = "sidebar-button";
-
-	expandSidebar(win); // DON'T FORGET TO REMOVE THIS BEFORE COMMITTING DON'T FORGET TO REMOVE THIS BEFORE COMMITTING DON'T FORGET TO REMOVE THIS BEFORE COMMITTING DON'T FORGET TO REMOVE THIS BEFORE COMMITTING DON'T FORGET TO REMOVE THIS BEFORE COMMITTING DON'T FORGET TO REMOVE THIS BEFORE COMMITTING DON'T FORGET TO REMOVE THIS BEFORE COMMITTING
-	// DON'T FORGET TO REMOVE THIS BEFORE COMMITTING DON'T FORGET TO REMOVE THIS BEFORE COMMITTING DON'T FORGET TO REMOVE THIS BEFORE COMMITTING
-	// DON'T FORGET TO REMOVE THIS BEFORE COMMITTING DON'T FORGET TO REMOVE THIS BEFORE COMMITTING DON'T FORGET TO REMOVE THIS BEFORE COMMITTING
-	// DON'T FORGET TO REMOVE THIS BEFORE COMMITTING DON'T FORGET TO REMOVE THIS BEFORE COMMITTING DON'T FORGET TO REMOVE THIS BEFORE COMMITTING
-	// DON'T FORGET TO REMOVE THIS BEFORE COMMITTING DON'T FORGET TO REMOVE THIS BEFORE COMMITTING DON'T FORGET TO REMOVE THIS BEFORE COMMITTING
-
+	
 	// When the sidebar button is clicked open it
 	sidebarButton.addEventListener("click", function(e) {
 		expandSidebar(win);
@@ -120,7 +114,12 @@ function createSidebarNavButton(container, buttons) {
 		sidebarNavButton.append(textTest);
 
 		if (obj?.subButtons) {
-			createSidebarNavButton(sidebarNavButton, obj.subButtons);
+			const subButtonsDiv = document.createElement("div");
+			subButtonsDiv.classList.add("sidebar-nav-subbuttons");
+
+			createSidebarNavButton(subButtonsDiv, obj.subButtons);
+
+			sidebarNavButton.append(subButtonsDiv);
 		}
 
 		container.append(sidebarNavButton);

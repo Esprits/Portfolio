@@ -1,4 +1,4 @@
-/* SIDEBAR CLOSED */
+/* ##### SIDEBAR CLOSED ##### */
 
 side-bar {
 	position: absolute;
@@ -33,6 +33,20 @@ side-bar {
 	cursor: pointer;
 }
 
+
+/* ##### SIDEBAR EXPANDED ##### */
+
+side-bar:state(expanded) {
+	width: 300px;
+}
+
+side-bar:state(expanded) > #sidebar-button {
+	transform: translateX(235px) rotateY(180deg);
+}
+
+
+/* ##### SIDEBAR CONTENTS ##### */
+
 #sidebar-contents {
 	position: absolute;
 
@@ -43,6 +57,8 @@ side-bar {
 	height: 100%;
 
 	background: slategrey;
+
+	overflow: hidden;
 }
 
 #sidebar-nav {
@@ -51,29 +67,51 @@ side-bar {
 	top: 50%;
 	left: 50%;
 
-	width: 80%;
+	width: 85%;
 
 	transform: translate(-50%, -50%);
+}
 
-	border-style: solid none;
-	border-width: 2px;
+.sidebar-nav-subbuttons {
+	width: 90%;
+
+	margin-left: auto;
+}
+
+.sidebar-nav-button > p {
+	&:hover {
+		color: white;
+		background: darkslategrey;
+	}
+
+	padding: 0.75rem;
+
+	cursor: pointer;
+
+	/* Button borders start */
+	border-top-style: solid;
+	border-width: 4px;
 	border-color: white;
+
+	transition: background 300ms, color 300ms;
 }
 
-.sidebar-nav-button {
+.sidebar-nav-button:last-child > p {
+	border-bottom-style: solid;
 }
 
-.sidebar-nav-button > .sidebar-nav-button {
+.sidebar-nav-button:has(.sidebar-nav-subbuttons) > p {
+	border-bottom-style: solid;
 }
 
-
-
-/* SIDEBAR EXPANDED */
-
-side-bar:state(expanded) {
-	width: 300px;
+.sidebar-nav-subbuttons > .sidebar-nav-button > p {
+	border-width: 2px;
+}
+.sidebar-nav-subbuttons > .sidebar-nav-button:first-child > p {
+	border-top-style: none;
 }
 
-side-bar:state(expanded) > #sidebar-button {
-	transform: translateX(235px) rotateY(180deg);
+.sidebar-nav-subbuttons > .sidebar-nav-button:last-child > p {
+	border-bottom-style: none;
 }
+/* Button borders end */
