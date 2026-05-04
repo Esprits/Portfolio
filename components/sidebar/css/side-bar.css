@@ -42,7 +42,28 @@ side-bar {
 	width: 100%;
 	height: 100%;
 
-	background: red;
+	background: slategrey;
+}
+
+#sidebar-nav {
+	position: absolute;
+
+	top: 50%;
+	left: 50%;
+
+	width: 80%;
+
+	transform: translate(-50%, -50%);
+
+	border-style: solid none;
+	border-width: 2px;
+	border-color: white;
+}
+
+.sidebar-nav-button {
+}
+
+.sidebar-nav-button > .sidebar-nav-button {
 }
 
 
