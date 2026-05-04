@@ -74,8 +74,13 @@ side-bar:state(expanded) > #sidebar-button {
 
 .sidebar-nav-subbuttons {
 	width: 90%;
+	height: 0;
 
 	margin-left: auto;
+
+	overflow: hidden;
+
+	transition: height 400ms;
 }
 
 .sidebar-nav-button > p {
@@ -100,7 +105,7 @@ side-bar:state(expanded) > #sidebar-button {
 	border-bottom-style: solid;
 }
 
-.sidebar-nav-button:has(.sidebar-nav-subbuttons) > p {
+.sidebar-nav-button:has(.sidebar-nav-subbuttons.expanded) > p {
 	border-bottom-style: solid;
 }
 

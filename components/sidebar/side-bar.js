@@ -48,7 +48,7 @@ function addDOMElements(win) {
 function createSidebarButton(win) {
 	const sidebarButton = document.createElement("div");
 	sidebarButton.id = "sidebar-button";
-	
+
 	// When the sidebar button is clicked open it
 	sidebarButton.addEventListener("click", function(e) {
 		expandSidebar(win);
@@ -72,9 +72,16 @@ function createSidebarContents(win) {
 	document.addEventListener("click", function(e) {
 		if (win.expanded) {
 			if (e.target !== sidebarContents) {
-				e.stopPropagation();
+				// TEMPORARILY REMOVED THE OPTION TO CLOSE THE SIDEBAR
+				// TEMPORARILY REMOVED THE OPTION TO CLOSE THE SIDEBAR
+				// TEMPORARILY REMOVED THE OPTION TO CLOSE THE SIDEBAR
+				// TEMPORARILY REMOVED THE OPTION TO CLOSE THE SIDEBAR
+				// TEMPORARILY REMOVED THE OPTION TO CLOSE THE SIDEBAR
+				// TEMPORARILY REMOVED THE OPTION TO CLOSE THE SIDEBAR
 
-				closeSidebar(win);
+				//e.stopPropagation();
+
+				//closeSidebar(win);
 			}
 		}
 	}, true);
@@ -109,18 +116,28 @@ function createSidebarNavButton(container, buttons) {
 		sidebarNavButton.classList.add("sidebar-nav-button");
 		sidebarNavButton.id = obj.action;
 
-		const textTest = document.createElement("p");
-		textTest.innerText = obj.title;
-		sidebarNavButton.append(textTest);
+		const buttonText = document.createElement("p");
+		buttonText.innerText = obj.title;
+		sidebarNavButton.append(buttonText);
 
+		const subButtonsDiv = document.createElement("div");
 		if (obj?.subButtons) {
-			const subButtonsDiv = document.createElement("div");
 			subButtonsDiv.classList.add("sidebar-nav-subbuttons");
 
 			createSidebarNavButton(subButtonsDiv, obj.subButtons);
 
 			sidebarNavButton.append(subButtonsDiv);
 		}
+
+		buttonText.addEventListener("click", function(e) {
+			if (obj.action.includes("Page")) {
+				pageFunctionality(obj.action);
+			}
+
+			if (obj.action.includes("Submenu")) {
+				submenuFunctionality(subButtonsDiv);
+			}
+		}, true);
 
 		container.append(sidebarNavButton);
 	}
@@ -135,6 +152,20 @@ function expandSidebar(win) {
 
 function closeSidebar(win) {
 	win.expanded = false;
+}
+
+function pageFunctionality(action) {
+	// TODO Add the functionality to change pages
+}
+
+function submenuFunctionality(submenuDiv) {
+	if (submenuDiv.clientHeight) {
+		submenuDiv.style.height = 0;
+		submenuDiv.classList.remove("expanded");
+	} else {
+		submenuDiv.style.height = submenuDiv.scrollHeight + "px";
+		submenuDiv.classList.add("expanded");
+	}
 }
 
 
