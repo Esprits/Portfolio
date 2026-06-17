@@ -113,8 +113,11 @@ function createSidebarNavButtons(container, buttons) {
 		const obj = buttons[i];
 
 		const sidebarNavButton = document.createElement("div");
-		sidebarNavButton.classList.add("sidebar-nav-button");
 		sidebarNavButton.id = obj.action;
+		sidebarNavButton.classList.add("sidebar-nav-button");
+		if (obj.action.includes("Submenu")) {
+			sidebarNavButton.classList.add("sidebar-nav-button-submenu");
+		}
 
 		const buttonText = document.createElement("p");
 		buttonText.innerText = obj.title;
