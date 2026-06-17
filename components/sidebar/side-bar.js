@@ -35,6 +35,24 @@ class Sidebar extends HTMLElement {
 }
 
 
+/* ##### CONSTANTS ##### */
+
+// TODO Move this to a JSON file and use it here and in each page file
+const sidebarButtons = [
+	{"title": "Home", "type": "page", "page": "home"},
+	{"title": "Projects", "type": "submenu", "subButtons": [
+		{"title": "School", "type": "page", "page": "schoolProjects"},
+		{"title": "Personal", "type": "page", "page": "personalProjects"}
+	]},
+	{"title": "Documents", "type": "submenu", "subButtons": [
+		{"title": "Resume", "type": "page", "page": "resume"},
+		{"title": "Diplomas", "type": "page", "page": "diplomas"},
+		{"title": "Other Documents", "type": "page", "page": "otherDocuments"}
+	]},
+	{"title": "About Me", "type": "page", "page": "about"},
+];
+
+
 /* ##### DOM FUNCTIONS ##### */
 
 function addDOMElements(win) {
@@ -91,20 +109,6 @@ function createSidebarContents(win) {
 
 // Adds buttons and more to the sidebar nav
 function fillSidebarNav(win, sidebarNav) {
-	const sidebarButtons = [
-		{"title": "Home", "action": "homePage"},
-		{"title": "Projects", "action": "projectsSubmenu", "subButtons": [
-			{"title": "School", "action": "schoolProjectsPage"},
-			{"title": "Personal", "action": "personalProjectsPage"}
-		]},
-		{"title": "Documents", "action": "documentsSubmenu", "subButtons": [
-			{"title": "Resume", "action": "resumePage"},
-			{"title": "Diplomas", "action": "diplomasPage"},
-			{"title": "Other Documents", "action": "otherDocsPage"}
-		]},
-		{"title": "About Me", "action": "aboutPage"},
-	];
-
 	createSidebarNavButtons(sidebarNav, sidebarButtons);
 }
 
@@ -115,7 +119,7 @@ function createSidebarNavButtons(container, buttons) {
 		const sidebarNavButton = document.createElement("div");
 		sidebarNavButton.id = obj.action;
 		sidebarNavButton.classList.add("sidebar-nav-button");
-		if (obj.action.includes("Submenu")) {
+		if (obj.type === "submenu") {
 			sidebarNavButton.classList.add("sidebar-nav-button-submenu");
 		}
 
@@ -136,11 +140,11 @@ function createSidebarNavButtons(container, buttons) {
 
 		// Adds functionality to the button
 		buttonText.addEventListener("click", function(e) {
-			if (obj.action.includes("Page")) { // If the button is used to redirect to a page
-				pageFunctionality(obj.action);
+			if (obj.type === "page") { // If the button is used to redirect to a page
+				pageFunctionality(obj.page);
 			}
 
-			if (obj.action.includes("Submenu")) { // If the button is simply used to open a sub-menu
+			if (obj.type === "submenu") { // If the button is simply used to open a sub-menu
 				submenuFunctionality(subButtonsDiv);
 			}
 		}, true);
@@ -168,8 +172,8 @@ function closeSidebar(win) {
 	win.expanded = false;
 }
 
-function pageFunctionality(action) {
-	// TODO Add the functionality to change pages
+function pageFunctionality(page) {
+	loadPage(page); // Calls the function from current-page.js
 }
 
 function submenuFunctionality(submenuDiv) {
