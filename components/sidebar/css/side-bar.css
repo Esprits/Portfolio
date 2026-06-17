@@ -145,7 +145,5 @@ side-bar:state(expanded) > #sidebar-button {
 }
 
 .sidebar-nav-button-submenu:has(.expanded) > p:after {
-	content: '';
-
 	transform: translateX(-14px) rotate(90deg) rotateY(-180deg);
 }
