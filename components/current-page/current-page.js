@@ -8,7 +8,7 @@ class CurrentPage extends HTMLElement {
 	connectedCallback() { // Called each time the element is added to the document
 		const win = this;
 
-		loadPage();
+		loadPage("home"); // FIXME For some reason not having "home" here makes it so that it sometimes doesn't load
 	}
 
 	diconnectedCallback() { // Called each time the element is removed from the document

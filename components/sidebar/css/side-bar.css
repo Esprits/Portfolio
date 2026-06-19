@@ -10,6 +10,8 @@ side-bar {
 	height: 100vh;
 
 	transition: width 500ms;
+
+	z-index: 50;
 }
 
 #sidebar-button {
@@ -31,6 +33,9 @@ side-bar {
 	transition: transform 750ms ease;
 
 	cursor: pointer;
+
+	/* Temporary inverted the button's color so that it's visible with the black background on the home page */
+	filter: invert(100%);
 }
 
 
