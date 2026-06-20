@@ -108,9 +108,17 @@ function createForegroundLayer() {
 	return fg;
 }
 
+// FIXME Same issue than with the name (lines should be over
+// - the peephole, but under the photo)
 function createLines() {
 	const lines = document.createElement("div");
 	lines.id = "home-fg-lines";
+	lines.classList.add("z-0");
+
+	const svg = document.createElement("img");
+	svg.src = "assets/vectors/lines.svg";
+
+	lines.append(svg);
 
 	return lines;
 }
@@ -118,6 +126,7 @@ function createLines() {
 function createPhoto() {
 	const photo = document.createElement("div");
 	photo.id = "home-fg-photo";
+	photo.classList.add("z-5");
 
 	return photo;
 }

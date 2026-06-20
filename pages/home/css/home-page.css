@@ -35,7 +35,7 @@
 	grid-area: home-container;
 
 	width: 100%;
-	heighT: 100%;
+	height: 100%;
 }
 
 #home-mid-title-container {
@@ -70,10 +70,16 @@
 }
 
 #home-fg-lines {
-	/* TODO Add the lines using polygons (look into it) */
+	position: absolute;
+}
+
+#home-fg-lines > img {
+	transform: translate(-300px, -150px);
 }
 
 #home-fg-photo {
+	position: absolute;
+
 	width: 100%;
 	height: 100%;
 
