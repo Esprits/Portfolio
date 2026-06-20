@@ -69,6 +69,20 @@
 	background-size: 100% 100%;
 }
 
+#home-lines {
+	/* TODO Add the lines using polygons (look into it) */
+}
+
+#home-photo {
+	width: 100%;
+	height: 100%;
+
+	background-image: url("../../../assets/images/home_background_photo.png");
+	background-repeat: no-repeat;
+	background-position: top;
+	background-size: 100% 100%;
+}
+
 
 /* ##### HOME PEEPHOLE ##### */
 

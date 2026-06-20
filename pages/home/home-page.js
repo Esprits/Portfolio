@@ -99,7 +99,27 @@ function createForegroundLayer() {
 	fg.id = "home-foreground";
 	fg.classList.add("z-10");
 
+	const lines = createLines();
+	const photo = createPhoto();
+
+	fg.append(lines);
+	fg.append(photo);
+
 	return fg;
+}
+
+function createLines() {
+	const lines = document.createElement("div");
+	lines.id = "home-lines";
+
+	return lines;
+}
+
+function createPhoto() {
+	const photo = document.createElement("div");
+	photo.id = "home-photo";
+
+	return photo;
 }
 
 function createPeepholeLayer() {
