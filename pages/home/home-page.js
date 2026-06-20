@@ -31,6 +31,17 @@ function createMiddleLayer() {
 	mid.id = "home-middle";
 	mid.classList.add("z-5");
 
+	const titleContainer = createTitleContainer();
+
+	mid.append(titleContainer);
+
+	return mid;
+}
+
+function createTitleContainer() {
+	const container = document.createElement("div");
+	container.id = "home-title-container";
+
 	const title = document.createElement("div");
 	title.id = "home-title";
 
@@ -40,10 +51,10 @@ function createMiddleLayer() {
 	subtitle.id = "home-subtitle";
 	subtitle.innerText = "Portfolio";
 
-	mid.append(title);
-	mid.append(subtitle);
+	container.append(title);
+	container.append(subtitle);
 
-	return mid;
+	return container;
 }
 
 // FIXME Find a way to have name & surnameStart on top of z-15 (vignette)

@@ -33,8 +33,13 @@
 
 #home-middle {
 	grid-area: home-container;
-	
-	transform: translate(-190px, -150px);
+
+	width: 100%;
+	heighT: 100%;
+}
+
+#home-title-container {
+	transform: translate(-190px, 150px);
 
 	color: mediumpurple;
 	text-align: center;
