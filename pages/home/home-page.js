@@ -20,7 +20,7 @@ function home() {
 
 function createBackgroundLayer() {
 	const bg = document.createElement("div");
-	bg.id = "home-background";
+	bg.id = "home-bg";
 	bg.classList.add("z-0");
 
 	return bg;
@@ -28,7 +28,7 @@ function createBackgroundLayer() {
 
 function createMiddleLayer() {
 	const mid = document.createElement("div");
-	mid.id = "home-middle";
+	mid.id = "home-mid";
 	mid.classList.add("z-5");
 
 	const titleContainer = createTitleContainer();
@@ -40,15 +40,15 @@ function createMiddleLayer() {
 
 function createTitleContainer() {
 	const container = document.createElement("div");
-	container.id = "home-title-container";
+	container.id = "home-mid-title-container";
 
 	const title = document.createElement("div");
-	title.id = "home-title";
+	title.id = "home-mid-title";
 
 	addImagesToTitle(title);
 
 	const subtitle = document.createElement("h2");
-	subtitle.id = "home-subtitle";
+	subtitle.id = "home-mid-subtitle";
 	subtitle.innerText = "Portfolio";
 
 	container.append(title);
@@ -96,7 +96,7 @@ function getSurnameImages() {
 
 function createForegroundLayer() {
 	const fg = document.createElement("div");
-	fg.id = "home-foreground";
+	fg.id = "home-fg";
 	fg.classList.add("z-10");
 
 	const lines = createLines();
@@ -110,21 +110,21 @@ function createForegroundLayer() {
 
 function createLines() {
 	const lines = document.createElement("div");
-	lines.id = "home-lines";
+	lines.id = "home-fg-lines";
 
 	return lines;
 }
 
 function createPhoto() {
 	const photo = document.createElement("div");
-	photo.id = "home-photo";
+	photo.id = "home-fg-photo";
 
 	return photo;
 }
 
 function createPeepholeLayer() {
 	const peephole = document.createElement("div");
-	peephole.id = "home-peephole";
+	peephole.id = "home-ph";
 	peephole.classList.add("z-15");
 
 	return peephole;
