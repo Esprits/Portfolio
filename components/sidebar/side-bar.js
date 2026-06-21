@@ -7,6 +7,7 @@ class Sidebar extends HTMLElement {
 
 	connectedCallback() { // Called each time the element is added to the document
 		const win = this;
+		win.classList.add("z-25");
 
 		addDOMElements(win);
 	}

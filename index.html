@@ -24,14 +24,20 @@
 		<script src="pages/documents/other/other-documents-page.js" async></script>
 
 		<!-- Component Links -->
+		<script src="components/welcome/welcome.js" async></script>
+		<link rel="stylesheet" type="text/css" href="components/welcome/css/welcome.css">
+		
 		<script src="components/sidebar/side-bar.js" async></script>
 		<link rel="stylesheet" type="text/css" href="components/sidebar/css/side-bar.css">
-
+		
 		<script src="components/current-page/current-page.js" async></script>
 		<link rel="stylesheet" type="text/css" href="components/current-page/css/current-page.css">
 	</head>
 	<body>
-		<side-bar></side-bar>
-		<current-page></current-page>
+		<welcome-view></welcome-view>
+		<div id="website">
+			<side-bar></side-bar>
+			<current-page></current-page>
+		</div>
 	</body>
 </html>

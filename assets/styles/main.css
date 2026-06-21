@@ -27,3 +27,9 @@
 .z-30 {
 	z-index: 30;
 }
+
+#website {
+	opacity: 0;
+
+	transition: opacity 250ms ease;
+}
