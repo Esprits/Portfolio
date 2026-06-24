@@ -33,6 +33,8 @@
 
 	transition: opacity 250ms ease;
 
+	overflow-x: hidden;
+
 	/* TODO REMOVE THIS ONCE THE WEBSITE IS OVER */
 	opacity: 1!important;
 }

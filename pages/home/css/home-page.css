@@ -9,8 +9,6 @@
 
 	width: 75%;
 	height: 100svh;
-
-	overflow: hidden;
 }
 
 
@@ -74,7 +72,7 @@
 }
 
 #home-fg-lines > img {
-	transform: translate(-300px, -150px);
+	transform: translate(-335px, -150px);
 }
 
 #home-fg-photo {
@@ -99,4 +97,7 @@
 	height: 100%;
 
 	background: radial-gradient(circle at center, #00000000 50%, black 75%);
+
+	/* TODO REMOVE THIS ONCE THE OVERLAP ISSUE IS FIXED */
+	opacity: 0;
 }

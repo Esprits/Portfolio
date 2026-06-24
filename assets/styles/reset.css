@@ -3,6 +3,9 @@
 	padding: 0;
 
 	font-family: 'TBD';
+
+	scrollbar-width: 8px;
+	scrollbar-color: #8851b5 #000000;
 }
 
 body {
