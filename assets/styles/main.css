@@ -32,4 +32,7 @@
 	opacity: 0;
 
 	transition: opacity 250ms ease;
+
+	/* TODO REMOVE THIS ONCE THE WEBSITE IS OVER */
+	opacity: 1!important;
 }

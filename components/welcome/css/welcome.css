@@ -10,6 +10,9 @@ welcome-view {
 	color: white;
 
 	overflow: hidden;
+
+	/* TODO REMOVE THIS ONCE THE WEBSITE IS OVER */
+	display: none!important;
 }
 
 #welcome-container {
@@ -57,4 +60,6 @@ welcome-view {
 	width: 100px;
 
 	transform: translate(-50%, -50%);
+
+	cursor: pointer;
 }
